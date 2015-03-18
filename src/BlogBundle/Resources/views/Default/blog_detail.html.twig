@@ -3,8 +3,12 @@
 
 
 <div class="panel panel-default">
-	<div class="panel-heading">{{blog.cim}}</div>
+	<div class="panel-heading">
+		{{blog.cim}}
+		<div class="pull-right">{{blog.keszitesIdopontja|date("Y-m-d H:i:s")}}</div>
+	</div>
 	<div class="panel-body">
+		<b>Szerző:</b> {{blog.szerzo}}<br />
 		{{blog.bevezeto}}
 		<hr />
 		{{blog.bejegyzes}}
