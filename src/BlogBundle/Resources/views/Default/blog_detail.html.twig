@@ -1,0 +1,79 @@
+{% extends 'BlogBundle:Default:index.html.twig' %}
+{% block content %}
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">{{blog.cim}}</div>
+	<div class="panel-body">
+		{{blog.bevezeto}}
+		<hr />
+		{{blog.bejegyzes}}
+		
+	</div>
+	<div class="panel-footer">
+		<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Hozzászólok</button>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">Hozzászólások</div>
+	{% if blog.hozzaszolasok|length > 0 %}
+	<ul class="list-group">
+		{% for comment in blog.hozzaszolasok %}
+		<li class="list-group-item">
+			<b>{{comment.nev}}</b><br />
+			{{comment.hozzaszolas}}<br />
+			<i>{{comment.keszitesIdopontja|date("Y-m-d H:i:s")}}</i>
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<div class="panel-body text-center">
+			<b>Még nem szólt hozzá senki, legyél Te az első!</b><br /><br />
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Hozzászólok</button>
+	</div>
+	{% endif %}
+</div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	{{ form_start(form) }}
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Hozzászólás írása</h4>
+			</div>
+			<div class="modal-body">
+
+				{{ form_errors(form) }}
+				<div class="form-group">
+					<label >{{ form_label(form.nev) }}</label>
+					{{ form_widget(form.nev,{ 'attr': {'class': 'form-control'} }) }}
+				</div>
+				<div class="form-group">
+					<label >{{ form_label(form.hozzaszolas) }}</label>
+					{{ form_widget(form.hozzaszolas,{ 'attr': {'class': 'form-control'} }) }}
+				</div>
+
+
+
+
+
+
+				
+				
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Mégsem</button>
+				<button type="submit" class="btn btn-primary">Hozzászólás küldése</button>
+			</div>
+		</div>
+	</div>
+	{{ form_end(form) }}
+</div>
+
+{% endblock %}

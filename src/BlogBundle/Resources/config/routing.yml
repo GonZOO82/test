@@ -1,0 +1,13 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Default:index }
+
+blog_detail:
+    path:     /blog/{id}
+    defaults: { _controller: BlogBundle:Default:detail, id:false}
+    requirements:
+        id: \d+
+
+uj_blog:
+    path:     /uj_blog
+    defaults: { _controller: BlogBundle:Default:uj_blog}

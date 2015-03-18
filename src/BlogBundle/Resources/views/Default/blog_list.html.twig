@@ -1,0 +1,20 @@
+{% extends 'BlogBundle:Default:index.html.twig' %}
+{% block content %}
+
+{% for blog in blog_bejegyzesek %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href="{{path('blog_detail', {'id': blog.id})}}" title="{{blog.cim}}">{{blog.cim}}</a> 
+		<div class="pull-right">{{blog.keszitesIdopontja|date("Y-m-d H:i:s")}}</div>
+	</div>
+	<div class="panel-body">
+		<b>Szerző:</b> {{blog.szerzo}}<br />
+		{{blog.bevezeto}}
+	</div>
+	<div class="panel-footer">
+		<a href="{{path('blog_detail', {'id': blog.id})}}" title="részletek" class="btn btn-primary btn-xs">részletek</a>
+		<div class="pull-right">hozzászólások: {{blog.hozzaszolasok|length}} db </div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

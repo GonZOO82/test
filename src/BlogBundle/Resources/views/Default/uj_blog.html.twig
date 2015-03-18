@@ -1,0 +1,34 @@
+{% extends 'BlogBundle:Default:index.html.twig' %}
+{% block content %}
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">Új blog bejegyzés készítése</div>
+	<div class="panel-body">
+	{{ form_start(form) }}
+	{{ form_errors(form) }}
+	<div class="form-group">
+		<label >{{ form_label(form.szerzo) }}</label>
+		{{ form_widget(form.szerzo,{ 'attr': {'class': 'form-control'} }) }}
+	</div>
+	<div class="form-group">
+		<label >{{ form_label(form.cim) }}</label>
+		{{ form_widget(form.cim,{ 'attr': {'class': 'form-control'} }) }}
+	</div>
+	<div class="form-group">
+		<label >{{ form_label(form.bevezeto) }}</label>
+		{{ form_widget(form.bevezeto,{ 'attr': {'class': 'form-control'} }) }}
+	</div>
+	<div class="form-group">
+		<label >{{ form_label(form.bejegyzes) }}</label>
+		{{ form_widget(form.bejegyzes,{ 'attr': {'class': 'form-control'} }) }}
+	</div>
+	
+	
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary">Bejegyzés mentése</button>
+	</div>
+	{{ form_end(form) }}
+</div>
+{% endblock %}
